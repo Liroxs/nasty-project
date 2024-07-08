@@ -2,7 +2,7 @@ const { Slick } = require("@borane/slick");
 
 new Slick({
     workspace: __dirname,
-    port: 5000,
+    port: 80,
 
     lang: "en",
     alias: {
