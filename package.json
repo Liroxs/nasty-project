@@ -1,0 +1,16 @@
+{
+  "name": "nastyprojectv2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node ./src/index.js",
+  "scripts": {
+    "dev": "node ./src/index.js --dev",
+    "build": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "Yazuko&Lirox",
+  "license": "ISC",
+  "dependencies": {
+    "@borane/slick": "^5.0.8"
+  }
+}

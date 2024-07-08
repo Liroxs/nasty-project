@@ -1,0 +1,1 @@
+for(let e of document.querySelectorAll("#faq > div > p:first-child"))e.addEventListener("click",()=>e.parentElement.classList[e.parentElement.classList.contains("active")?"remove":"add"]("active"));

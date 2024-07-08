@@ -1,0 +1,631 @@
+* {
+    padding: 0;
+    margin: 0;
+    --fg-color: #ffffff;
+
+
+    --green: #42e0ce;
+    --purple: hsl(225, 100%, 65%);
+    --red: #ee6677;
+    --error-red: #dc3545;
+
+
+    --cyan: #0bb9cb;
+    --blue: #01beff;
+    --orange: #e58133;
+
+
+    --grey: rgba(255, 255, 255, .25);
+}
+
+/***************************************************/
+/* Modifications du style des balises HTML de base */
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    
+    background-color: var(--background);
+    color: var(--fg-color);
+    
+    scroll-behavior: smooth;
+    
+    min-height: 100vh;
+}
+
+input, button {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+nav > div{
+    padding: 1rem;
+}
+/***************************************************/
+
+
+
+/***************************************************/
+/*       Déclaration des classes utilitaires       */
+
+.blur-round {
+    opacity: 60%;
+    width: 100px;
+    height: 60px;
+    background-color: #6842ff;
+    border-radius: 100%;
+    filter: blur(20px);
+    position: absolute;
+    transition: all 0.2s ease;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.none {
+    display: none;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.error-border {
+    border: 3px solid var(--error-red) !important;
+    border-color: #dc3545;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.error-border-red {
+    border: 3px solid var(--error-red) !important;
+    border-color: #dc3545;
+}
+
+.error {
+    font-size: 12px;
+    color: var(--error-red);
+    margin-bottom: 10px;
+}
+
+.center {
+    justify-content: center;
+}
+
+.msg-box {
+    padding: 9px;
+    border-radius: 12px;
+    text-align: center;
+
+    margin-top: 47px;
+    margin-bottom: 47px;
+}
+
+.bigger {
+    font-size: 25px;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+
+.X {
+    background-color: var(--purple);
+}
+
+.fg-O {
+    color: var(--green) !important;
+}
+
+.fg-X {
+    color: var(--red) !important;
+}
+
+.fg {
+    color: var(--grey);
+}
+
+.bolder {
+    font-weight: 900;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+/***************************************************/
+
+
+
+/**************************************************/
+/*          Définitions des classes CSS           */
+
+/* GÉNÉRALITÉS */
+
+
+
+.glass-button {
+    display: inline-block;
+    padding: 14px 19px 11px;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgba(30, 31, 48, 0.7);
+    border: 1px solid var(--grey);
+    backdrop-filter: blur(30px);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.5s
+}
+  
+.glass-button:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.grid {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    z-index: -1;
+}
+
+.blur {
+    height: 12rem;
+    width: 12rem;
+    background-color: var(--primary);
+    filter: blur(100px);
+    border-radius: 100px;
+    z-index: 0;
+    position: absolute;
+  }
+
+
+.container {
+    margin: 20px 12.5vw;
+}
+
+button, .button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.button {
+    padding: 22px 31px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+}
+
+button i {
+    font-size: 30px;
+}
+
+
+/**************************************************/
+
+
+/*******************************************************/
+/*    Stylisation des page de profil et de settings    */
+#settings {
+    width: 92vw;
+    margin-top: 3vw;
+    margin-left: -6vw
+}
+
+#settings .blur-round {
+    width: 65px;
+}
+
+#settings #settings-block .blur-round {
+    width: 350px;
+    height: 30px;
+    margin-left: -30px;
+}
+
+#settings .banner {
+    position: relative;
+    height: 19vh;
+    border-radius: 8px;
+    overflow: hidden;
+    user-select: none;
+    background: rgba(30, 31, 48, 0.7);
+    border: 1px solid var(--grey);
+}
+
+#settings .informations {
+    color: #5e5e5e;
+    z-index: 10;
+    width: calc(100vw - 10%);
+    height: 160px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+#settings .profile-name {
+    position: absolute;
+    border: 1px solid var(--grey);
+    color: #fff;
+    background-color: #bababa;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    user-select: none;
+    font-family: Avenir, sans-serif;
+    top: -40%;
+    left: 0;
+}
+
+#settings .profile-left {
+    margin-left: 10%;
+}
+
+#settings .profile-info {
+    margin-left: 190px;
+    color: var(--fg-color);
+}
+
+#settings .mail {
+    font-weight: bolder;
+    margin-bottom: 0 !important;
+    font-size: 22px;
+}
+
+#settings .point-info {
+    font-size: 15px;
+}
+
+#settings .pro-buttons {
+    margin-left: auto;
+    margin-top: 15px;
+}
+
+#settings .pro-cards {
+    margin-top: 160px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 3%;
+    height: 25vh;
+}
+
+#settings .pro-cards h5 {
+    margin-bottom: 14px;
+    font-size: 1.25rem;
+    padding-left: 4px;
+    padding-top: 14px;
+}
+
+
+#settings .pro-cards .more-infos {
+    /* box-shadow: rgba(161, 79, 214, 0.2) 0px 0px 0px 3px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 3px;
+    background-color: #161618;
+    border-radius: 8px;
+    */
+    width: 47%;
+    height: 35vh;
+    padding: 10px;
+    padding-top: 0px;
+
+    border: 1px solid var(--grey);
+    border-radius: 20px;
+    background-color: rgba(30, 31, 48, 0.30);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(15px);
+}
+
+#settings .pro-cards .scrollable {
+    height: 80%;
+    overflow: scroll;
+}
+
+#settings .pro-cards .expand {
+    margin-right: 10px;
+    cursor: pointer;
+
+
+    padding: 0;
+}
+
+#settings .info {
+    padding: 25px;
+    height: 65%;
+}
+
+#settings .trophy {
+    /* background: linear-gradient(135deg, #18bc9c -20%, #01beff 120%); */
+    background-color: rgba(28, 45, 63, 0.5) !important;
+}
+
+#settings .transfer {
+    /* background: linear-gradient(135deg, #5c46eb -20%, #01beff 120%); */
+    background-color: rgba(32, 39, 67, 1) !important;
+
+}
+
+#settings .x-circle {
+    background-color: rgba(51, 40, 49, 0.5) !important;
+}
+
+
+
+#settings .bx-trophy {
+    color: var(--cyan) !important;
+}
+#settings .bx-transfer {
+    color: var(--blue) !important;
+}
+#settings .bx-x-circle {
+    color: var(--orange) !important;
+}
+
+#settings .info .block-container {
+    transition: 250ms;
+    perspective: 500px;
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 32px 45px;
+}
+
+#settings .block-container .btn-back {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: inherit;
+    height: inherit;
+    border-radius: 32px;
+    transition: 250ms;
+    transform-style: preserve-3d;
+    transform-origin: bottom right;
+    transform: rotateZ(8deg);
+    will-change: transform;
+    box-shadow: 2px 0 4px var(--grey);
+}
+
+#settings .block-container .btn-back-1 {
+    background: linear-gradient(135deg, var(--green) -20%, var(--blue) 120%);
+}
+#settings .block-container .btn-back-2 {
+    background: linear-gradient(135deg, var(--blue) -20%, var(--cyan) 120%);
+}
+#settings .block-container .btn-back-3 {
+    background: linear-gradient(135deg, var(--red) -20%, var(--orange) 120%);
+}
+
+#settings .block-container .btn-front {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: inherit;
+    height: inherit;
+    border-radius: 32px;
+    background-color: rgba(30, 31, 48, 0.90);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+    transition: 250ms;
+    transform-style: preserve-3d;
+    transform-origin: top left;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#settings .block-container .btn-front span {
+    text-align: center;
+}
+
+#settings .block-container .btn-front svg.frame {
+    width: inherit;
+    height: inherit;
+}
+#settings .block-container .btn-front svg.frame rect {
+    width: inherit;
+    height: inherit;
+    fill: none;
+    stroke-width: 4;
+}
+#settings .block-container .btn-front svg.icon {
+    position: absolute;
+    inset: 50% 0 0 50%;
+    transform: translate(-50%, -50%);
+}
+#settings .block-container:hover > .btn-back {
+    transform: translateZ(20px) rotateZ(5deg) rotateX(-5deg) rotateY(-5deg);
+}
+#settings .block-container:hover > .btn-front {
+    transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+}
+
+#settings .stats {
+    font-weight: 900 !important;
+    font-size: 75px;
+}
+
+#settings .battle {
+    background-color: var(--cyan);
+    display: flex;
+    padding: 15px;
+    margin: 15px 10px;
+    border-radius: 5px;
+}
+
+#settings .profile-link {
+    font-weight: 700;
+    color: var(--fg-color);
+}
+
+/* settings page  */
+#settings .settings-banner {
+    font-size: 50px;
+    font-weight: 700;
+    display: flex; 
+    align-items: center; 
+    padding-left: 70px;
+} 
+
+#settings .settings-container {
+    height: 51vh !important;
+}
+
+#settings .settings-container .content {
+    margin-top: 20px;
+    height: calc(100% - 100px);
+}
+
+#settings .settings-container .content button {
+    font-weight: 800;
+    color: var(--fg-color);
+    min-width: fit-content;
+    width: 400px;
+}
+
+#settings .bg-red {
+    border-radius: 15px;
+    background-color: var(--red);
+}
+#settings .bg-red:hover {
+    background-color: rgba(238, 102, 119, 0.4);
+    transition: all 1s;
+}
+
+#settings-block form input {
+    font-weight: 800;
+    min-width: fit-content;
+    display: inline-block;
+    padding: 14px 19px 11px;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgba(30, 31, 48, 0.7);
+    border: 1px solid var(--grey);
+    backdrop-filter: blur(30px);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px;
+    transition: all 0.5s;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60vw !important;}
+
+#settings-block form button {
+    width: calc(60vw + 22px + 18px) !important;
+}
+
+#settings-block button.larger {
+    width: calc(60vw + 22px + 18px) !important;
+}
+
+@media(max-width: 1000px) {
+    .container {
+        margin: 20px 4.5vw
+    }
+
+    #auth .input-form {
+        width: max-content;
+        width: -moz-available;
+        width: -webkit-fill-available;
+    }
+
+    #settings .pro-cards {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    #settings .settings-div {
+        width: max-content !important;
+    }
+
+    #settings .pro-cards .more-infos {
+        width: calc(100% - 20px);
+        margin-top: 20px;
+        height: 50vh;
+    }
+
+    #settings .info {
+        flex-direction: column;
+        overflow: scroll;
+        overflow-x: hidden;
+        gap: 150px;
+    }
+
+    #settings .info .block-container {
+        width: 87%;
+    }
+
+    #settings .info .card {
+        width: calc(100% - 40px);
+    }
+}
+
+@media(max-width: 550px) {
+    #settings .profile-left {
+        margin-left: 25px;
+    }
+}
